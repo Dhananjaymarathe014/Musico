@@ -1,6 +1,18 @@
 import { Music, Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: (page: string) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
+  const handleNavClick = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+      // Scroll to top when navigating
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-black border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -32,24 +44,36 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+                <button
+                  onClick={() => handleNavClick('home')}
+                  className="text-gray-400 hover:text-red-500 transition-colors text-sm text-left"
+                >
                   Home
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+                <button
+                  onClick={() => handleNavClick('instruments')}
+                  className="text-gray-400 hover:text-red-500 transition-colors text-sm text-left"
+                >
                   Instruments
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+                <button
+                  onClick={() => handleNavClick('gallery')}
+                  className="text-gray-400 hover:text-red-500 transition-colors text-sm text-left"
+                >
                   Gallery
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+                <button
+                  onClick={() => handleNavClick('contact')}
+                  className="text-gray-400 hover:text-red-500 transition-colors text-sm text-left"
+                >
                   Contact
-                </a>
+                </button>
               </li>
             </ul>
           </div>
