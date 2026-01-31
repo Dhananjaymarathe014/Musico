@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,6 +8,10 @@ import Contact from './pages/Contact';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+
+  useEffect(() => {
+    document.title = "KVTR's Music Library";
+  }, []);
 
   const renderPage = () => {
     switch (currentPage) {

@@ -100,15 +100,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Discover the art of music through our diverse programs and talented artists
           </p>
-          <button 
-            onClick={() => {
-              const aboutSection = document.getElementById('about-us');
-              if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
-            className="px-8 py-3 border-2 border-red-500 text-red-500 hover:bg-red-500/10 font-semibold rounded-md transition-all transform hover:scale-105 backdrop-blur-sm"
-          >
+          <button className="px-8 py-3 border-2 border-red-500 text-red-500 hover:bg-red-500/10 font-semibold rounded-md transition-all transform hover:scale-105 backdrop-blur-sm">
             Explore Our Department
           </button>
         </div>
@@ -120,7 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-us" className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             About Our <span className="text-red-500">Department</span>
