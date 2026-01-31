@@ -100,7 +100,15 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Discover the art of music through our diverse programs and talented artists
           </p>
-          <button className="px-8 py-3 border-2 border-red-500 text-red-500 hover:bg-red-500/10 font-semibold rounded-md transition-all transform hover:scale-105 backdrop-blur-sm">
+          <button 
+            onClick={() => {
+              const aboutSection = document.getElementById('about-us');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="px-8 py-3 border-2 border-red-500 text-red-500 hover:bg-red-500/10 font-semibold rounded-md transition-all transform hover:scale-105 backdrop-blur-sm"
+          >
             Explore Our Department
           </button>
         </div>
@@ -112,7 +120,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+      <section id="about-us" className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             About Our <span className="text-red-500">Department</span>
@@ -299,8 +307,8 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
                     <p className="text-gray-400">
-                      123 Music Avenue, Arts District<br />
-                      New York, NY 10001
+                      KVTR's CBSE School<br />
+                      shirpur , 425405
                     </p>
                   </div>
                 </div>
@@ -311,8 +319,8 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Call Us</h3>
                     <p className="text-gray-400">
-                      Main: (555) 123-4567<br />
-                      Admissions: (555) 123-4568
+                      Main: (+91) 968-946-2674<br />
+                      Admissions: (+91) 968-946-2675
                     </p>
                   </div>
                 </div>
@@ -369,7 +377,7 @@ export default function Home() {
                     onChange={handleContactChange}
                     required
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-red-500 transition-colors"
-                    placeholder="John Doe"
+                    placeholder="KVTR CBSE"
                   />
                 </div>
                 <div>
@@ -384,7 +392,7 @@ export default function Home() {
                     onChange={handleContactChange}
                     required
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-red-500 transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="kvtr@example.com"
                   />
                 </div>
                 <div>
