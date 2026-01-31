@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import { ContactSubmission } from '../types';
 
 export default function Contact() {
@@ -19,9 +20,12 @@ export default function Contact() {
     setError('');
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const { error: submitError } = await supabase
+        .from('contact_submissions')
+        .insert([formData]);
+
+      if (submitError) throw submitError;
+
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
@@ -63,8 +67,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
                     <p className="text-gray-400">
-                      123 Music Avenue, Arts District<br />
-                      New York, NY 10001
+                       KVTR's CBSE School<br />
+                      shirpur , 425405
                     </p>
                   </div>
                 </div>
@@ -75,8 +79,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Call Us</h3>
                     <p className="text-gray-400">
-                      Main: (555) 123-4567<br />
-                      Admissions: (555) 123-4568
+                      Main: (+91) 968-946-2674<br />
+                      Admissions: (+91) 968-946-2675
                     </p>
                   </div>
                 </div>
@@ -138,7 +142,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-red-500 transition-colors"
-                    placeholder="John Doe"
+                    placeholder="KVTR CBSE"
                   />
                 </div>
                 <div>
@@ -153,7 +157,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-red-500 transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="kvtr@example.com"
                   />
                 </div>
                 <div>

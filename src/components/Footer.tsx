@@ -88,13 +88,13 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-sm">
-                  123 Music Avenue, Arts District<br />
-                  New York, NY 10001
+                  KVTR's CBSE School<br />
+                  shirpur , 425405
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-red-500 flex-shrink-0" />
-                <span className="text-gray-400 text-sm">(555) 123-4567</span>
+                <span className="text-gray-400 text-sm">(+91) 968-946-2674</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-red-500 flex-shrink-0" />

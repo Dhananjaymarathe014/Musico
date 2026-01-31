@@ -21,8 +21,14 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     setIsMenuOpen(false);
   };
 
+  const isLandingPage = currentPage === 'home';
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-gray-800/50">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all backdrop-blur-md ${
+      isLandingPage 
+        ? 'bg-black/10 border-b border-gray-800/30' 
+        : 'bg-black/20 border-b border-gray-800/50'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div
@@ -71,7 +77,11 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-black/30 backdrop-blur-md border-t border-gray-800/50">
+        <div className={`md:hidden transition-all ${
+          isLandingPage 
+            ? 'bg-black/80 backdrop-blur-md border-t border-gray-800/50' 
+            : 'bg-black/30 backdrop-blur-md border-t border-gray-800/50'
+        }`}>
           <div className="px-4 pt-2 pb-4 space-y-2">
             {navItems.map((item) => (
               <button
