@@ -1,36 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Image, Video, Filter } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 import { GalleryItem } from '../types';
 
 export default function Gallery() {
-  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchGalleryItems();
-  }, []);
-
-  const fetchGalleryItems = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('gallery_items')
-        .select('*')
-        .order('order_index', { ascending: true });
-
-      if (error) throw error;
-      setGalleryItems(data || []);
-    } catch (error) {
-      console.error('Error fetching gallery items:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const filteredItems = galleryItems.filter(
-    (item) => filter === 'all' || item.media_type === filter
-  );
 
   const placeholderItems = [
     {
@@ -83,7 +56,11 @@ export default function Gallery() {
     },
   ];
 
-  const displayItems = filteredItems.length > 0 ? filteredItems : placeholderItems;
+  const filteredItems = placeholderItems.filter(
+    (item) => filter === 'all' || item.media_type === filter
+  );
+  
+  const displayItems = filteredItems;
 
   return (
     <div className="bg-black text-white min-h-screen pt-16">
@@ -135,12 +112,7 @@ export default function Gallery() {
             </button>
           </div>
 
-          {loading ? (
-            <div className="text-center py-20">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-500"></div>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {displayItems.map((item) => (
                 <div
                   key={item.id}
@@ -170,7 +142,6 @@ export default function Gallery() {
                 </div>
               ))}
             </div>
-          )}
         </div>
       </section>
     </div>
